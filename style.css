@@ -1,0 +1,559 @@
+/* Styling untuk keseluruhan halaman */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6c4a4a;
+    color: white;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    text-align: center;
+    width: 50%; /* Agar judul mengisi lebar pada mobile */
+}
+
+header input {
+    flex: 1;
+    margin: 0 15px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 60%;  /* Menyesuaikan lebar input di perangkat kecil */
+}
+
+header button {
+    background-color: white;
+    color: #6c4a4a;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+header button span {
+    font-weight: bold;
+}
+
+header button:hover {
+    background-color: #f4f4f4;
+}
+
+/* Menu Container */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Menyesuaikan jumlah kolom */
+    gap: 25px; /* Jarak antar item */
+    padding: 25px; /* Memberi ruang sekitar */
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Menu Item */
+.menu-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item img {
+    max-width: 120px; /* Menyesuaikan lebar gambar */
+    height: 120px; /* Menyesuaikan tinggi gambar */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto 15px;
+}
+
+.menu-info {
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.menu-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #6c4a4a;
+    margin-bottom: 10px;
+}
+
+.menu-info p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Tombol untuk memesan dan menambahkan ke favorit */
+.order-button,
+.favorite-button {
+    background-color: #6c4a4a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    width: 100%; /* Memastikan tombol mengisi lebar kontainer */
+}
+
+/* Tombol Cart dan Favorit (sejajarkan secara fleksibel) */
+.button-container {
+    display: flex;
+    justify-content: space-between;  /* Menyusun tombol secara horizontal */
+    gap: 15px;  /* Jarak antar tombol */
+}
+
+.order-button:hover,
+.favorite-button:hover {
+    background-color: #5a3a3a;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.modal-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-content ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-content ul li:last-child {
+    border-bottom: none;
+}
+
+.modal-content button {
+    background-color: #6c4a4a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.modal-content button:hover {
+    background-color: #5a3a3a;
+}
+
+/* CSS untuk notifikasi */
+.notification {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #6c4a4a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 3s forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Gaya Umum untuk Tombol Ikon */
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+    background-color: #4a3b48; /* Warna latar belakang biru */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+/* Menambahkan efek hover */
+.icon-button:hover {
+    background-color: #603524; /* Warna saat hover */
+}
+
+/* Styling ikon - Warna coklat untuk ikon */
+.icon-button svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px; /* Memberikan jarak antara ikon dan teks */
+    fill: #8B4513; /* Warna coklat */
+}
+
+/* Tombol dengan jumlah (cartCount dan favoriteCount) */
+.icon-button span {
+    font-weight: bold;
+}
+
+/* Responsif: Mengubah ukuran ikon untuk layar kecil */
+@media (max-width: 768px) {
+    .icon-button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .icon-button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Media Queries untuk Responsif */
+
+/* Untuk Tablet (768px ke bawah) */
+@media (max-width: 300px) {
+    /* Menyesuaikan header agar lebih sederhana di tablet */
+    header {
+        padding: 15px;
+        text-align: center;
+    }
+
+    header input {
+        width: 75%;  /* Menyesuaikan input agar lebih kecil di tablet */
+    }
+
+    header button {
+        width: 60%;
+    }
+
+    /* Menu item - 2 kolom per baris */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .menu-item {
+        width: 20%;  /* Mengatur menu item menjadi dua kolom per baris */
+        margin-bottom: 20px;
+    }
+
+    /* Tombol pada menu item */
+    .order-button, .favorite-button {
+        width: 100%;
+    }
+
+    /* Modal content */
+    .modal-content {
+        width: 80%;  /* Membuat modal lebih kecil dan fleksibel */
+    }
+}
+
+/* Untuk Mobile (480px ke bawah) */
+@media (max-width: 480px) {
+    /* Mengubah header menjadi lebih kecil */
+    header {
+        padding: 20px;
+    }
+
+    header input {
+        width: 80%; /* Membatasi lebar input agar lebih kecil */
+    }
+
+    header button {
+        width: 60%;  /* Tombol lebih kecil pada mobile */
+    }
+
+    /* Menu item - 1 kolom per baris */
+    .container {
+        flex-direction: column;  /* Mengubah menu ke 1 kolom */
+        align-items: center;     /* Menyejajarkan semua item di tengah */
+        padding: 10px;
+    }
+
+    .menu-item {
+        width: 90%;  /* Menu item hanya menggunakan 90% lebar container */
+        margin-bottom: 15px;
+    }
+
+    /* Tombol pada menu item */
+    .order-button, .favorite-button {
+        width: 100%;
+    }
+
+    /* Menyesuaikan modal content */
+    .modal-content {
+        width: 95%;  /* Modal akan lebih kecil dan pas di layar ponsel */
+    }
+
+    /* Mengurangi ukuran font header untuk mobile */
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+.size-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.size-button {
+    padding: 10px 20px;
+    border: 2px solid #6f5c5c;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.size-button:hover {
+    background-color: #624747;
+    color: #fff;
+}
+
+.size-button.selected {
+    background-color: #654747;
+    color: #fff;
+}
+.size-button.selected {
+    background-color: #71574c; /* Ganti dengan warna sesuai preferensi */
+    color: white; /* Ganti dengan warna teks yang diinginkan */
+}
+
+/* Gaya umum untuk tombol */
+button {
+    background-color: #603524s;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Gaya untuk tombol ukuran */
+.size-button {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.size-button.selected {
+    background-color: #603524;
+    color: white;
+    border-color: #603524;
+}
+
+/* Gaya untuk daftar item di keranjang */
+#cartItems li {
+    margin-bottom: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cartItems li button {
+    background-color: #dc3545;
+}
+
+/* Gaya untuk notifikasi */
+#notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #331e18;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#notification.show {
+    display: block;
+}
+
+.swal-wide-popup {
+    width: 500px !important;
+    max-width: 90%;
+    padding: 20px;
+}
+
+.swal-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.swal-confirm-button {
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.swal-cancel-button {
+    background-color: #f44336;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.swal-confirm-button:hover {
+    background-color: #45a049;
+}
+
+.swal-cancel-button:hover {
+    background-color: #e53935;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+header button {
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+main {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+form input, form textarea, form button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+#menuList {
+    list-style: none;
+    padding: 0;
+}
+
+#menuList li {
+    background-color: #f8f9fa;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#menuList button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#menuList button:nth-child(1) {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+#menuList button:nth-child(1):hover {
+    background-color: #e0a800;
+}
+
+#menuList button:nth-child(2) {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#menuList button:nth-child(2):hover {
+    background-color: #c82333;
+}
+

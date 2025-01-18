@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Manage Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <button onclick="logout()">Logout</button>
+    </header>
+    <main>
+        <h2>Manage Menu</h2>
+        <form id="menuForm">
+            <input type="text" id="itemName" placeholder="Item Name" required>
+            <input type="number" id="regularPrice" placeholder="Regular Price" required>
+            <input type="number" id="largePrice" placeholder="Large Price" required>
+            <textarea id="itemDescription" placeholder="Description" required></textarea>
+            <button type="submit" id="addButton">Add Item</button>
+            <button type="button" id="updateButton" style="display: none;">Update Item</button>
+        </form>
+        <ul id="menuList"></ul>
+    </main>
+    <script src="admin.js"></script>
+</body>
+</html>

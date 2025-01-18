@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janji Jiwa Modern Menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Janji Jiwa Menu</h1>
+        <button id="loginButton" onclick="toggleLogin()">Login</button>
+        <input type="text" id="searchBar" placeholder="Search menu..." onkeyup="filterMenu()">
+        <!-- Tombol Cart -->
+<button onclick="openCart()" class="icon-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="cart-icon">
+        <path d="M7 4h10l1.6 8H5.4L7 4zm-4 10h18l-1.6 8H4.6L3 14zm9 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+    </svg>
+    (<span id="cartCount">0</span>)
+</button>
+
+<!-- Tombol Favorites -->
+<button onclick="openFavorites()" class="icon-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="favorites-icon">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+    (<span id="favoriteCount">0</span>)
+</button>
+        <div id="notification" class="notification">Item added to cart!</div>
+        <div id="notification" class="notification">Item added to favorites!</div>
+    </header>   
+
+    <div class="container" id="menuContainer">
+        <!-- Bagian pada HTML untuk item Kopi Susu -->
+        <div class="menu-item" data-name="Es Kopi Susu">
+            <img src="images/Kopisusu.jpg" alt="Kopi Susu">
+            <div class="menu-info">
+                <h3>Kopi Susu</h3>
+                <p>iced coffee with creamy milk and brown sugar.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="21000" data-large="26000">Rp 21,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Es Kopi Susu')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Es Kopi Susu')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Es Kopi Susu', 21000, 'regular')">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Es Kopi Susu', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>                       
+
+        <div class="menu-item" data-name="Americano">
+            <img src="images/americano.jpg" alt="Americano">
+            <div class="menu-info">
+                <h3>Americano</h3>
+                <p>Bold and smooth black coffee Robusta.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="17000" data-large="23000">Rp 17,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Americano')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Americano')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Americano', 17000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Americano', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>        
+
+        <div class="menu-item" data-name="Latte">
+            <img src="images/latte.jpg" alt="Latte">
+            <div class="menu-info">
+                <h3>Latte</h3>
+                <p>Peerfect blend of milk and espresso.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="22000" data-large="27000">Rp 22,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Latte')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Latte')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Latte', 22000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Latte', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="Kopimilo">
+            <img src="images/kopimilo.jpg" alt="Cappuccino">
+            <div class="menu-info">
+                <h3>Kopi Milo</h3>
+                <p>Unique blend Espresso and Fresh Milo </p>
+                <p><strong>Price:</strong> <span class="price" data-regular="26000" data-large="32000">Rp 26,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Kopi milo')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Kopi milo')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Kopi milo', 26000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Kopi milo', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="Kopisoklat">
+            <img src="images/kopisoklat.jpg" alt="Mocha">
+            <div class="menu-info">
+                <h3>Kopi soklat</h3>
+                <p>Chocolate blend coffee with fresh milk.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="25000" data-large="31000">Rp 25,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'kopisoklat')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'kopisoklat')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Kopi soklat', 25000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Kopi soklat', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="Vanila latte">
+            <img src="images/latte.jpg" alt="Espresso">
+            <div class="menu-info">
+                <h3>Vanilla latte</h3>
+                <p>Espresso, fresh milk and vanilla syrup</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="26000" data-large="32000">Rp 26,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Vanilla Latte')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Vanilla Latte')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Vanilla latte',26,000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Vanilla Latte', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="Matcha Latte">
+            <img src="images/matchalatte.jpg" alt="Matcha Latte">
+            <div class="menu-info">
+                <h3>Matcha Latte</h3>
+                <p>Delicious Matcha and Fresh Milk.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="28000" data-large="34000">Rp 28,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Matcha Latte')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Matcha Latte')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Matcha Latte', 28000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Matcha Latte', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="Caramel Macchiato">
+            <img src="images/CaramelMachiato.jpg" alt="Caramel Macchiato">
+            <div class="menu-info">
+                <h3>Caramel Macchiato</h3>
+                <p>Delicious blend of coffee, milk, and caramel.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="27000" data-large="33000">Rp 27,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Caramel Macchiato')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Caramel Macchiato')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Caramel Macchiato', 27000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Caramel Macchiato', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="Pandan latte">
+            <img src="images/pandanlatte.jpg" alt="Caramel Macchiato">
+            <div class="menu-info">
+                <h3>Pandan Latte</h3>
+                <p>Delicious blend of coffee, milk, and Pandan.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="26000" data-large="32000">Rp 26,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Pandan latte)">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'pandan latte')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Pandan Latte', 27000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Pandan Latte', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="Hazelnut Latte">
+            <img src="images/latte.jpg" alt="Caramel Macchiato">
+            <div class="menu-info">
+                <h3>Hazelnut latte</h3>
+                <p>Delicious blend of coffee, milk, and hazelnut.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="26000" data-large="32000">Rp 26,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Hazelnut latte')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Hazelnut Latte')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Hazelnut latte', 26000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Hazelnut lattes', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="CaramelLatte">
+            <img src="images/latte.jpg" alt="Caramellatte">
+            <div class="menu-info">
+                <h3>Caramel Latte</h3>
+                <p>Delicious blend of coffee, milk, and caramel.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="26000" data-large="32000">Rp 26,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Caramel latte')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Caramel Latte')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Caramel Latte', 26000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Caramel Macchiato', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+
+        <div class="menu-item" data-name="kopisususenja">
+            <img src="images/Kopisusu.jpg" alt="kopisususenja">
+            <div class="menu-info">
+                <h3>Kopi susu senja</h3>
+                <p>Delicious blend of coffee arabica, milk.</p>
+                <p><strong>Price:</strong> <span class="price" data-regular="25000" data-large="31000">Rp 25,000</span></p>
+                <button class="size-button" data-size="regular" onclick="selectSize(this, 'Kopi susu senja')">Regular</button>
+                <button class="size-button" data-size="large" onclick="selectSize(this, 'Kopi susu senja')">Large</button>
+            </div>
+            <button class="order-button" onclick="addToCart('Kopi susu senja', 25000)">Add to Cart</button>
+            <button class="favorite-button" onclick="addToFavorites('Kopi susu senja', 'https://via.placeholder.com/300')">Add to Favorites</button>
+        </div>
+    </div>
+
+    <div id="cart" class="modal">
+        <div class="modal-content">
+            <h3>Your Cart</h3>
+            <ul id="cartItems"></ul>
+            <p id="cartTotal">Total: Rp 0</p>
+            <button onclick="checkout()">Checkout</button>
+            <button onclick="closeCart()">Close</button>
+        </div>
+    </div>
+
+    <div id="favorites" class="modal">
+        <div class="modal-content">
+            <h3>Your Favorites</h3>
+            <ul id="favoriteItems"></ul>
+            <button onclick="closeFavorites()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
